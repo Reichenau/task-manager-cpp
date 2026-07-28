@@ -17,16 +17,19 @@ protected:
 };
 
 TEST(TaskTest, GetTitle){
+    Task::resetId();
     Task t("Task", "Description");
     EXPECT_EQ(t.getTitle(), "Task");
 }
 
 TEST(TaskTest, GetDescription){
+    Task::resetId();
     Task t("Task", "Description");
     EXPECT_EQ(t.getDescription(), "Description");
 }
 
 TEST(TaskTest, GetStatus){
+    Task::resetId();
     Task t("Task", "Description");
     EXPECT_FALSE(t.getStatus());
 }
@@ -38,29 +41,34 @@ TEST(TaskTest, GetId){
 }
 
 TEST(TaskTest, GetPriority){
+    Task::resetId();
     Task t("Task", "Description");
     EXPECT_EQ(t.getPriority(), Task::TaskPriority::LOW);
 }
 
 TEST(TaskTest, ChangePriorityToLow){
+    Task::resetId();
     Task t("Task", "Description");
     t.changePriority(Task::TaskPriority::LOW);
     EXPECT_EQ(t.getPriority(), Task::TaskPriority::LOW);
 }
 
 TEST(TaskTest, ChangePriorityToMedium){
+    Task::resetId();
     Task t("Task", "Description");
     t.changePriority(Task::TaskPriority::MEDIUM);
     EXPECT_EQ(t.getPriority(), Task::TaskPriority::MEDIUM);
 }
 
 TEST(TaskTest, ChangePriorityToHigh){
+    Task::resetId();
     Task t("Task", "Description");
     t.changePriority(Task::TaskPriority::HIGH);
     EXPECT_EQ(t.getPriority(), Task::TaskPriority::HIGH);
 }
 
 TEST(TaskTest, MarkCompleted){
+    Task::resetId();
     Task t("Task", "Description");
     t.markCompleted();
     EXPECT_TRUE(t.getStatus());
