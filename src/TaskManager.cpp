@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <algorithm>
 
 #include "TaskManager.hpp"
 #include "Task.hpp"

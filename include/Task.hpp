@@ -15,7 +15,7 @@ private:
     std::string m_description;
     bool m_done{false};
     inline static std::size_t next_id{1};
-    const std::size_t m_id;
+    std::size_t m_id;
     TaskPriority m_priority{TaskPriority::LOW};
 public:
     Task(const std::string& title, const std::string& desc)
