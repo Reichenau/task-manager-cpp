@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    command: ./build/task_manager
+
+  tests:
+    build: .
+    command: ./build/task_manager_test
