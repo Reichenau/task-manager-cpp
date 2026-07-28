@@ -92,13 +92,13 @@ TEST_F(TaskManagerTest, CompleteTask){
     EXPECT_TRUE(tm.getTasks()[1].getStatus());
 }
 
-TEST_F(TaskManagerTest, GetPending){
+TEST_F(TaskManagerTest, GetCompleted){
     tm.completeTask(1);
     tm.completeTask(2);
     EXPECT_EQ(tm.getCompleted().size(), 2);
 }
 
-TEST_F(TaskManagerTest, GetCompleted){
+TEST_F(TaskManagerTest, GetPending){
     tm.completeTask(1);
     tm.completeTask(2);
     EXPECT_EQ(tm.getPending().size(), 1);
