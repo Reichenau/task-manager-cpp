@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(task_manager VERSION 1.0 LANGUAGES CXX)
 
-SET(CMAKE_CXX_STANDARD 17)
+SET(CMAKE_CXX_STANDARD 20)
 SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
@@ -12,7 +12,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_library(task_manager_lib STATIC src/TaskManager.cpp)
+add_library(task_manager_lib STATIC src/TaskManager.cpp src/Task.cpp)
 target_include_directories(task_manager_lib PUBLIC include/)
 
 add_executable(task_manager src/main.cpp)
