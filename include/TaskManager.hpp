@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 
-#include "TaskManager.hpp"
 #include "Task.hpp"
 
 class TaskManager{
