@@ -2,18 +2,18 @@
 
 #include "TaskManager.hpp"
 
-class TaskManagetTest: public testing::Test{
+class TaskManagerTest: public testing::Test{
 protected:
     void SetUp() override{
-        t.addTask("Task 1", "Description 1");
-        t.addTask("Task 2", "Description 2");
-        t.addTask("Task 3", "Description 3");
+        Task::resetId();
+
+        tm.addTask("Task 1", "Description 1");
+        tm.addTask("Task 2", "Description 2");
+        tm.addTask("Task 3", "Description 3");
     }
 
-    void TearDown() override{
-        Task::resetId();
-    }
-    TaskManager t;
+    void TearDown() override{}
+    TaskManager tm;
 };
 
 TEST(TaskTest, GetTitle){
@@ -64,6 +64,36 @@ TEST(TaskTest, MarkCompleted){
     Task t("Task", "Description");
     t.markCompleted();
     EXPECT_TRUE(t.getStatus());
+}
+
+// --------- TASKMANAGER ---------
+TEST_F(TaskManagerTest, addTask){
+    std::size_t before{tm.getTasks().size()};
+    tm.addTask("Task 4", "Description 4");
+    EXPECT_GT(tm.getTasks().size(), before);
+}
+
+TEST_F(TaskManagerTest, RemoveTask){
+    std::size_t before{tm.getTasks().size()};
+    tm.removeTask(2);
+    EXPECT_LT(tm.getTasks().size(), before);
+}
+
+TEST_F(TaskManagerTest, CompleteTask){
+    tm.completeTask(2);
+    EXPECT_TRUE(tm.getTasks()[1].getStatus());
+}
+
+TEST_F(TaskManagerTest, GetPending){
+    tm.completeTask(1);
+    tm.completeTask(2);
+    EXPECT_EQ(tm.getCompleted().size(), 2);
+}
+
+TEST_F(TaskManagerTest, GetCompleted){
+    tm.completeTask(1);
+    tm.completeTask(2);
+    EXPECT_EQ(tm.getPending().size(), 1);
 }
 
 
